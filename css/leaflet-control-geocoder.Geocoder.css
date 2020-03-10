@@ -1,6 +1,6 @@
 .leaflet-control-geocoder {
 	border-radius: 4px;
-	background: white;
+	background: red;
 	min-width: 26px;
 	min-height: 26px;
 }
@@ -44,8 +44,8 @@
 	border-radius: 4px;
 	width: 26px;
 	height: 26px;
-	border: none;
-	background-color: white;
+	border: blue;
+	background-color: green;
 	//background-image: url(images/geocoder.png);
 	background-repeat: no-repeat;
 	background-position: center;
