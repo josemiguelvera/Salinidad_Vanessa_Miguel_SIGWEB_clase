@@ -66,11 +66,10 @@
 
 		var punto = L.marker([3.37583,-76.53231]).bindPopup("<h1>Punto En El Mapa</h2>",estiloPopup).addTo(map); //creacion del punto y adicion del popup
 		
-
+		
 
 
 		
-        var poligono = L.polygon([[3.37584,-76.53232],[3.37585,-76.53231],[3.37586,-76.5323]]).addTo(map);
 		
 		var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -483,7 +482,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {};
-        L.control.layers(baseMaps,{'img src="legend/punto.png" /> Punto': punto,'<img src="legend/Edificaciones_8.png" /> Edificaciones': layer_Edificaciones_8,'<img src="legend/Vas_7.png" /> Vías': layer_Vas_7,'<img src="legend/DatosdelSensor_6.png" /> Datos del Sensor': layer_DatosdelSensor_6,'<img src="legend/ZonaE_5.png" /> Zona E': layer_ZonaE_5,'<img src="legend/ZonaD_4.png" /> Zona D': layer_ZonaD_4,'<img src="legend/ZonaC_3.png" /> Zona C': layer_ZonaC_3,'<img src="legend/ZonaB_2.png" /> Zona B': layer_ZonaB_2,'<img src="legend/ZonaA_1.png" /> Zona A': layer_ZonaA_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="legend/punto.png"/> Punto': punto,'<img src="legend/Edificaciones_8.png" /> Edificaciones': layer_Edificaciones_8,'<img src="legend/Vas_7.png" /> Vías': layer_Vas_7,'<img src="legend/DatosdelSensor_6.png" /> Datos del Sensor': layer_DatosdelSensor_6,'<img src="legend/ZonaE_5.png" /> Zona E': layer_ZonaE_5,'<img src="legend/ZonaD_4.png" /> Zona D': layer_ZonaD_4,'<img src="legend/ZonaC_3.png" /> Zona C': layer_ZonaC_3,'<img src="legend/ZonaB_2.png" /> Zona B': layer_ZonaB_2,'<img src="legend/ZonaA_1.png" /> Zona A': layer_ZonaA_1,"OpenStreetMap": layer_OpenStreetMap_0,}).addTo(map);
         setBounds();
         var i = 0;
         layer_ZonaA_1.eachLayer(function(layer) {
