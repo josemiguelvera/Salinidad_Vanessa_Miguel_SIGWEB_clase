@@ -52,9 +52,25 @@
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
         })
-		var punto = L.marker([3.37583,-76.53231]).addTo(map);
 		
-        var poligono = L.polygon([[3.37593,-76.53241],[3.37563,-76.53261],[3.37583,-76.53231]]).addTo(map);
+
+		var estiloPopup = {'maxWidth': '300'} //Estilo Popup
+ 
+			var iconoBase = L.Icon.extend({
+					options: {
+							iconSize:     [24, 39],
+							iconAnchor:   [16, 87],
+							popupAnchor:  [-3, -76]
+					}
+			});
+
+		var punto = L.marker([3.37583,-76.53231]).bindPopup("<h1>Punto En El Mapa</h2>",estiloPopup).addTo(map); //creacion del punto y adicion del popup
+		
+
+
+
+		
+        var poligono = L.polygon([[3.37584,-76.53232],[3.37585,-76.53231],[3.37586,-76.5323]]).addTo(map);
 		
 		var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
