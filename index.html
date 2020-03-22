@@ -53,6 +53,18 @@
             zoomControl:true, maxZoom:28, minZoom:1
         })
 		
+		var greenIcon = L.icon({
+			iconUrl: 'legend/punto.png',
+			//shadowUrl: 'legend/punto.png',
+
+			iconSize:     [16, 16], // size of the icon
+			//shadowSize:   [50, 64], // size of the shadow
+			iconAnchor:   [16, 16], // point of the icon which will correspond to marker's location
+			//shadowAnchor: [4, 62],  // the same for the shadow
+			//popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+});
+		
+		
 
 		var estiloPopup = {'maxWidth': '300'} //Estilo Popup
  
@@ -64,7 +76,7 @@
 					}
 			});
 
-		var punto = L.marker([3.37583,-76.53231]).bindPopup("<h1>Punto En El Mapa</h2>",estiloPopup).addTo(map); //creacion del punto y adicion del popup
+		var punto = L.marker([3.37583,-76.53231], {icon: greenIcon}).bindPopup("<h1>Punto En El Mapa</h2>",estiloPopup).addTo(map); //creacion del punto y adicion del popup
 		
 		
 
