@@ -45,7 +45,7 @@
         <script src="data/DatosdelSensor_6.js"></script>
         <script src="data/Vas_7.js"></script>
         <script src="data/Edificaciones_8.js"></script>
-		<script src="data/mc_comunas_1.js"></script> 
+		<script src="data/mc_comunas_1.js"></script>
 		<script src="dist/leaflet.browser.print.min.js"></script>
         <script>
         var map = L.map('map', {
@@ -54,14 +54,10 @@
 		
 		var estaciones_mio=L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/metrocali/wms?service=WMS&version=1.1.0',{layers:'metrocali:sitm_estaciones'}).addTo(map);
 		
-		//plugin de imprimir en el mapa
-		
-		L.control.browserPrint({
-			title: 'Imprimir'
-			position: 'bottomright'
-			}).addTo(map);
-		
-		
+		//plugin imprimir
+		L.control.browserPrint().addTo(map)
+
+
 		//icono en el mapa
 		var greenIcon = L.icon({ 
 			iconUrl: 'legend/punto.png',
