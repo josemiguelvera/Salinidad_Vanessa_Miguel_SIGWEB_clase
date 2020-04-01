@@ -31,6 +31,7 @@
 			padding: 1%;
 			border: 1px solid #999999;
 			background-color: #fff;
+
 		}
 		
 		.cajamap {
@@ -60,12 +61,20 @@
 		h2 {
 			margin-bottom: 5px;
 		}
+		h3 {
+			margin: 0;
+			text-align: center;
+			padding: 1px;
+	
+		}
 		textarea {
 			float: center
 			clear: both;
 			width: 90%;
 			height: 240px;
-			font-family: monospace;
+			font-family: Times;
+			text-align: justify;
+
 		}
 		#cargar {
 			margin: 20px 0 0 0;
@@ -87,13 +96,15 @@
 		<div id="controles">
 		<div class="caja">
 			<div id="controles">
-			
+				<h3>Sensor de Salinidad</h3>
 				<textarea id="opciones">
-				caja 1
+Este visor web contiene la elaboración del instrumento de monitoreo de salinidad por medio de sensores de bajo costo, donde se tiene que el instrumento puede sensar variables ambientales y georreferenciar el lugar de la toma del dato, por lo que esto facilita la descripción de características del lugar donde se esté tomando los datos permitiendo contemplar un panorama amplio de la realidad mediante un visor web.
+		<img src="images/salinidad.png">				
 				</textarea>
 				
+				<h3>Introduzca los datos CSV</h3>
 				<textarea id="csv">
-				caja 2
+				Datos CSV delimitados por comas
 				</textarea>
 		</div>
 		</div>
@@ -133,7 +144,7 @@
 		//altura del mapa al tamaño de los controles, dos columnas iguales
 		function ajusta_Altura() {
 			var altura = document.getElementById('controles').offsetHeight
-				document.getElementById('map').style.height = altura+500+"px";
+				document.getElementById('map').style.height = altura+520+"px";
 				}
 
 		ajusta_Altura();
