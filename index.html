@@ -12,25 +12,37 @@
 		<link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+
 		
 
         <style>
 		
-		html, body {
+
+		
+		html {
 			margin: 0;
 			padding: 0;
 			font-family: Times, Arial, sans-serif;
-			background-color: #eee;
+
+		}
+		
+		body{
+			margin: 0;
+			padding: 0;
+			font-family: Times, Arial, sans-serif;
+
+			background-image: url('images/bajo_el_agua.jpg');
 		}
 
 		.caja {
 			display: block;
 			float:left;
 			width: 18%;
-			margin: 1%;
+			margin: 0%;
 			padding: 1%;
-			border: 1px solid #999999;
-			background-color: #fff;
+			text-align: justify;
+
+
 
 		}
 		
@@ -53,10 +65,10 @@
 		}
 		h1 {
 			margin: 0;
-			text-align: center;
+			text-align: left;
 			padding: 10px;
-			border-bottom: 1px solid #ccc;
-			background-color: #29D3BF
+
+
 		}
 		h2 {
 			margin-bottom: 5px;
@@ -77,8 +89,9 @@
 
 		}
 		#cargar {
-			margin: 20px 0 0 0;
-			font-size: 1.2em;
+			margin: 5px 0 0 0;
+			font-size: 1em;
+			font-family: Times;
 		}
 		.CodeMirror {
 			border: 1px solid #eee;
@@ -92,20 +105,24 @@
         <title>Mapa de Salinidad</title>
     </head>
     <body>
-				<h1>Mapa de Salinidad en la Universidad del Valle</h1>
-		<div id="controles">
+	
+				<h1>Mapa de Salinidad - Universidad del Valle</h1>
+
 		<div class="caja">
 			<div id="controles">
 				<h3>Sensor de Salinidad</h3>
-				<textarea id="opciones">
+
+				
+				
 Este visor web contiene la elaboración del instrumento de monitoreo de salinidad por medio de sensores de bajo costo, donde se tiene que el instrumento puede sensar variables ambientales y georreferenciar el lugar de la toma del dato, por lo que esto facilita la descripción de características del lugar donde se esté tomando los datos permitiendo contemplar un panorama amplio de la realidad mediante un visor web.
-		<img src="images/salinidad.png">				
-				</textarea>
+				
+				
 				
 				<h3>Introduzca los datos CSV</h3>
 				<textarea id="csv">
 				Datos CSV delimitados por comas
 				</textarea>
+				<button id="cargar">Cargar datos CSV</button>
 		</div>
 		</div>
 		</div>
@@ -115,7 +132,7 @@ Este visor web contiene la elaboración del instrumento de monitoreo de salinida
 
 	
 	
-        <div id="map">
+       
         <script src="js/qgis2web_expressions.js"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
 		<script src="js/L.Control.Locate.min.js"></script>
@@ -139,12 +156,19 @@ Este visor web contiene la elaboración del instrumento de monitoreo de salinida
         <script src="data/Edificaciones_8.js"></script>
 		<script src="data/mc_comunas_1.js"></script>
 		<script src="dist/leaflet.browser.print.min.js"></script>
+
+		
         <script>
         
+		
+
+		
+
+
 		//altura del mapa al tamaño de los controles, dos columnas iguales
 		function ajusta_Altura() {
 			var altura = document.getElementById('controles').offsetHeight
-				document.getElementById('map').style.height = altura+520+"px";
+				document.getElementById('map').style.height = altura+0+"px";
 				}
 
 		ajusta_Altura();
@@ -155,9 +179,7 @@ Este visor web contiene la elaboración del instrumento de monitoreo de salinida
             zoomControl:true, maxZoom:28, minZoom:1
         })
 		
-		//plugin csv
-		
-		
+
 		
 		//capa wms
 		var estaciones_mio=L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/metrocali/wms?service=WMS&version=1.1.0',{layers:'metrocali:sitm_estaciones'}).addTo(map);
