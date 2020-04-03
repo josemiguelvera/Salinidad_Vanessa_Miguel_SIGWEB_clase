@@ -141,10 +141,10 @@
 <h3>Introduzca los datos CSV</h3>
 			
 				<textarea id="csv">
-3.37583;-76.53231;Sal
-3.37683;-76.53131;Sal
-3.3543;-76.53031;Sal
-3.37783;-76.54231;Sal
+3.37583;-76.53231;Sal;37°
+3.37683;-76.53131;Sal;37°
+3.3543;-76.53031;Sal;37°
+3.37783;-76.54231;Sal;37°
 				</textarea>
 				<button id="cargar">Cargar Datos CSV</button>
 
@@ -182,7 +182,7 @@ Vanessa Hernandez Bedoya &nbsp; <a href="https://www.facebook.com/vanessa14s">
 	
 			<textarea id="opciones" readonly=true>
 L.geoCsv(null,{
-  titles: ['lat', 'lng', 'popup'],
+  titles: ['lat', 'lng', 'Salinidad', 'Temperatura'],
   fieldSeparator: ';',
   lineSeparator: '\n',
   deleteDobleQuotes: true,
