@@ -141,10 +141,18 @@
 <h3>Introduzca los datos CSV</h3>
 			
 				<textarea id="csv">
-3.37583;-76.53231;Sal;37°
-3.37683;-76.53131;Sal;37°
-3.3543;-76.53031;Sal;37°
-3.37783;-76.54231;Sal;37°
+3.31114325;-76.5211026;1.17;24.56
+3.35661358;-76.49340527;1.17;24.62
+3.33016686;-76.50349357;1.18;24.56
+3.37936657;-76.51537324;1.17;24.62
+3.39961367;-76.53340365;1.16;24.56
+3.37194429;-76.48429624;1.04;24.56
+3.32866577;-76.52610942;1.15;24.5
+3.3357572;-76.48763041;1.18;24.44
+3.31010735;-76.49933218;1.17;24.44
+3.38597614;-76.48793977;0.83;25.56
+3.3418606;-76.49649111;0.21;-127
+3.37155852;-76.49209724;3.6;25.56
 				</textarea>
 				<button id="cargar">Cargar Datos CSV</button>
 
@@ -182,7 +190,7 @@ Vanessa Hernandez Bedoya &nbsp; <a href="https://www.facebook.com/vanessa14s">
 	
 			<textarea id="opciones" readonly=true>
 L.geoCsv(null,{
-  titles: ['lat', 'lng', 'Salinidad', 'Temperatura'],
+  titles: ['lat', 'lng', 'Salinidad (siemens)', 'Temperatura (°C)'],
   fieldSeparator: ';',
   lineSeparator: '\n',
   deleteDobleQuotes: true,
@@ -191,7 +199,7 @@ L.geoCsv(null,{
     var popup = '';
     for (var clave in feature.properties) {
       var title = geo_csv.getPropertyTitle(clave);
-      popup += '<b>'+title+'</b><br />'+feature.properties[clave]+'<br /><br />';
+      popup += '<b>'+title+': </b>'+feature.properties[clave]+'<br />';
     }
     layer.bindPopup(popup);
   }
