@@ -49,7 +49,7 @@
 		.cajamap {
 			display: block;
 			float:right;
-			width: 73%;
+			width: 75%;
 			height: 100%;
 			margin: 1%;
 			padding: 1%;
@@ -80,14 +80,15 @@
 	
 		}
 		textarea {
-			float: center
+			float: center;
 			clear: both;
-			width: 90%;
-			height: 240px;
+			width: 100%;
+			height: 150px;
 			font-family: Times;
-			text-align: justify;
+			text-align: left;
 
 		}
+		
 		#cargar {
 			margin: 5px 0 0 0;
 			font-size: 1em;
@@ -114,15 +115,22 @@
 
 				
 				
-Este visor web contiene la elaboración del instrumento de monitoreo de salinidad por medio de sensores de bajo costo, donde se tiene que el instrumento puede sensar variables ambientales y georreferenciar el lugar de la toma del dato, por lo que esto facilita la descripción de características del lugar donde se esté tomando los datos permitiendo contemplar un panorama amplio de la realidad mediante un visor web.
+<p>Este visor web contiene la elaboración del instrumento de monitoreo de salinidad por medio de sensores de bajo costo, donde se tiene que el instrumento puede sensar variables ambientales y georreferenciar el lugar de la toma del dato, por lo que esto facilita la descripción de características del lugar donde se esté tomando los datos permitiendo contemplar un panorama amplio de la realidad mediante un visor web.</p>
+<p>El sensor está compuesto por los siguientes intrumentos:
+<ul>
+	<li><a href="https://www.arduino.cc/en/Guide/ArduinoUno"> Arduino Uno</a></li>
+	<li><a href="https://www.alldatasheet.com/datasheet-pdf/pdf/58557/DALLAS/DS18B20.html">Termometro Digital DS18B20</a></li>
+	<li><a href="http://www.bolanosdj.com.ar/MOVIL/ARDUINO2/MedidorHumedadSuelo.pdf">Sensor de Humedad FC-28</a></li>
+	<li><a href="https://github.com/jalderman9/Dashcam_HAT/find/master">Modulo G28u7fttl</a></li>
+</u>
+</p>		
 				
 				
-				
-				<h3>Introduzca los datos CSV</h3>
+			<p><h3>Introduzca los datos CSV</h3></p>
 				<textarea id="csv">
-				Datos CSV delimitados por comas
+Datos CSV delimitados por comas
 				</textarea>
-				<button id="cargar">Cargar datos CSV</button>
+				<button id="cargar">Cargar Datos CSV</button>
 		</div>
 		</div>
 		</div>
