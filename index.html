@@ -13,8 +13,14 @@
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
 
+
+
+		<!-- CodeMirror -->
+		<link rel="stylesheet" href="codemirror/codemirror.css">
 		
 
+		
+		
         <style>
 		
 
@@ -80,6 +86,9 @@
 			padding: 1px;
 	
 		}
+		h6 {
+			color: #C0D4D5
+		}
 		textarea {
 			float: center;
 			padding: 1%;
@@ -96,13 +105,14 @@
 			font-size: 1em;
 			font-family: Times;
 		}
-		.CodeMirror {
+		.CodeMirror2 {
 			border: 1px solid #eee;
 			font-size: 1.2em;
 			height: auto;
 			font-family: monospace;
 		}
 
+		
 
         </style>
         <title>Mapa de Salinidad</title>
@@ -131,7 +141,10 @@
 <h3>Introduzca los datos CSV</h3>
 			
 				<textarea id="csv">
-Datos CSV delimitados por comas
+3.37583;-76.53231;Sal
+3.37683;-76.53131;Sal
+3.3543;-76.53031;Sal
+3.37783;-76.54231;Sal
 				</textarea>
 				<button id="cargar">Cargar Datos CSV</button>
 
@@ -142,8 +155,20 @@ Facultad de Ingeniería<br>
 Escuela de Ingeniería Civil y Geomática<br>
 Ingenieria Topografica<br><br>
 Contáctanos<br>
-Jose Miguel Vera Saavedra<br>
-Vanessa Hernandez Bedoya
+Jose Miguel Vera Saavedra &nbsp;&nbsp; <a href="https://www.facebook.com/miguel.vera.9026?ref=bookmarks">
+							<img src="images/facebook.png" style="width:12px;height:12px;border:0"></a>&nbsp; 
+							<a href="https://www.instagram.com/miguel0201/?hl=es-la">
+							<img src="images/instagram.jpg" style="width:12px;height:12px;border:0"></a>&nbsp; 
+							<a href="https://twitter.com/vera_9421">
+							<img src="images/twitter.png" style="width:12px;height:12px;border:0"></a> 
+							
+							<br>
+Vanessa Hernandez Bedoya &nbsp; <a href="https://www.facebook.com/vanessa14s">
+							<img src="images/facebook.png" style="width:12px;height:12px;border:0"></a>&nbsp; 
+							<a href="https://www.instagram.com/vanessa14s_/?hl=es-la">
+							<img src="images/instagram.jpg" style="width:12px;height:12px;border:0"></a>&nbsp; 
+							<a href="https://twitter.com/vanebed14">
+							<img src="images/twitter.png" style="width:12px;height:12px;border:0"></a> 
 
 </h6>
 		</div>
@@ -155,6 +180,25 @@ Vanessa Hernandez Bedoya
 		
 
 	
+			<textarea id="opciones" readonly=true>
+L.geoCsv(null,{
+  titles: ['lat', 'lng', 'popup'],
+  fieldSeparator: ';',
+  lineSeparator: '\n',
+  deleteDobleQuotes: true,
+  firstLineTitles: false,
+  onEachFeature: function (feature, layer) {
+    var popup = '';
+    for (var clave in feature.properties) {
+      var title = geo_csv.getPropertyTitle(clave);
+      popup += '<b>'+title+'</b><br />'+feature.properties[clave]+'<br /><br />';
+    }
+    layer.bindPopup(popup);
+  }
+});</textarea>
+
+
+
        
         <script src="js/qgis2web_expressions.js"></script>
         <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
@@ -179,12 +223,39 @@ Vanessa Hernandez Bedoya
         <script src="data/Edificaciones_8.js"></script>
 		<script src="data/mc_comunas_1.js"></script>
 		<script src="dist/leaflet.browser.print.min.js"></script>
+		<script src="codemirror/codemirror.js"></script>
+		<script src="codemirror/codemirror2.js"></script>
+		<script src="codemirror/util/matchbrackets.js"></script>
+		<script src="codemirror/mode-javascript.js"></script>
+		<!-- GeoCSV: https://github.com/joker-x/Leaflet.geoCSV -->
+		<script src="leaflet.geocsv-src.js"></script>
 
-		
         <script>
-        
-		
+//codemirror
+var opciones_editor = CodeMirror.fromTextArea(document.getElementById("opciones"), {
+  lineNumbers: false,
+  matchBrackets: true,
+  mode: "text/typescript"});
 
+var csv_editor = CodeMirror.fromTextArea(document.getElementById("csv"), {lineNumbers: true});
+
+//dotamos de funcionalidad al botón cargar
+var geo_csv = {};
+
+function cargar() {
+  //guardamos los cambios del usuario en sus respectivos textarea
+  opciones_editor.save();
+  csv_editor.save();
+  //borramos la capa geo_csv del mapa
+  map.removeLayer(geo_csv);
+  //recreamos la capa con las nuevas opciones
+  geo_csv = eval(document.getElementById('opciones').value);
+  geo_csv.addData(document.getElementById('csv').value);
+  map.addLayer(geo_csv);
+}
+
+document.getElementById('cargar').addEventListener('click', cargar, false);
+        
 		
 
 
@@ -200,7 +271,8 @@ Vanessa Hernandez Bedoya
 		
 		var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        })
+        });
+
 		
 
 		
