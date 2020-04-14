@@ -12,6 +12,7 @@
 		<link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
 
 
 
@@ -62,6 +63,40 @@
 			border: 0px solid #999999;
 			
 		}
+
+		.cajacontrol {
+			display: block;
+			float:right;
+			width: 78%;
+			height: 10px;
+			margin: 1%;
+			padding: 0%;
+			border: 0px solid #999999;
+			
+		}
+		.cajasal {
+			display: block;
+			float:left;
+			width: 47.5%;
+			height: 370px;
+			margin: 1%;
+			padding: 0%;
+			border: 1px solid #000000			
+			
+		}
+		
+		.cajatemp {
+			display: block;
+			float:right;
+			width: 47.5%;
+			height: 300px;
+			margin: 1%;
+			padding: 0%;
+			border: 1px solid #000000;
+			
+		}
+		
+
 
 
 		
@@ -205,6 +240,26 @@ L.geoCsv(null,{
   }
 });</textarea>
 
+	<div class="cajacontrol"></div>
+		
+
+		
+	<div class="cajasal">
+		<div id="grafsal">
+			<h3>Grafica de Salinidad</h3>
+				<div id="graficosal" ></div>
+			
+	</div>
+	</div>	
+			
+	<div class="cajasal">
+			<h3>Grafica de Temperatura</h3>
+				<div id="graficotemp" ></div>
+			
+	</div>
+
+
+	
 
 
        
@@ -237,6 +292,10 @@ L.geoCsv(null,{
 		<script src="codemirror/mode-javascript.js"></script>
 		<!-- GeoCSV: https://github.com/joker-x/Leaflet.geoCSV -->
 		<script src="leaflet.geocsv-src.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+		<script src="morris.min.js"></script>
+
 
         <script>
 //codemirror
@@ -282,7 +341,66 @@ document.getElementById('cargar').addEventListener('click', cargar, false);
         });
 
 		
+		// Grafica de salinidad vs tiempo
+			new Morris.Line({
+			  // ID of the element in which to draw the chart.
+			  element: 'graficosal',
+			  // Chart data records -- each entry in this array corresponds to a point on
+			  // the chart.
+			  data: [
+				{ h: '2020-03-30 00:00:00', s1: 1.73, s2: 3.12, s3: 1.32},
+				{ h: '2020-03-30 06:00:00', s1: 2.44, s2: 4.21, s3: 1.07},
+				{ h: '2020-03-30 12:00:00', s1: 1.65, s2: 1.48, s3: 0.69},
+				{ h: '2020-03-30 18:00:00', s1: 3.58, s2: 2.54, s3: 2.21}
+			  ],
+			  // The name of the data record attribute that contains x-values.
+			  xkey: 'h',
+			  // A list of names of data record attributes that contain y-values.
+			  ykeys: ['s1','s2','s3'],
+			  lineWidth: 1,
+			  
+			  // Labels for the ykeys -- will be displayed when you hover over the
+			  // chart.
+			  labels: ['Salineitor 1', 'Salineitor 2','Salineitor 3'],
+			  resize: true,
+			  lineColors: ['#2BAB37','#CD268E', '#E55300'],
+			  gridTextColor: ['#000000']
+			  
+			 
+			  
+			});			
+			
+		// Grafica de temperatura vs tiempo
+			new Morris.Line({
+			  // ID of the element in which to draw the chart.
+			  element: 'graficotemp',
+			  // Chart data records -- each entry in this array corresponds to a point on
+			  // the chart.
+			  data: [
+				{ h: '2020-03-30 00:00:00', s1: 23.73, s2: 20.12, s3: 11.32},
+				{ h: '2020-03-30 06:00:00', s1: 25.44, s2: 21.21, s3: 14.07},
+				{ h: '2020-03-30 12:00:00', s1: 22.65, s2: 18.48, s3: 12.69},
+				{ h: '2020-03-30 18:00:00', s1: 20.58, s2: 12.54, s3: 18.21}
+			  ],
+			  // The name of the data record attribute that contains x-values.
+			  xkey: 'h',
+			  // A list of names of data record attributes that contain y-values.
+			  ykeys: ['s1','s2','s3'],
+			  lineWidth: 1,
+			  
+			  // Labels for the ykeys -- will be displayed when you hover over the
+			  // chart.
+			  labels: ['Salineitor 1', 'Salineitor 2','Salineitor 3'],
+			  resize: true,
+			  lineColors: ['#2BAB37','#CD268E', '#E55300'],
+			  gridTextColor: ['#000000']
+			 
+			  
+			});			
 
+		
+		
+		
 		
 		//capa wms
 		var estaciones_mio=L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/metrocali/wms?service=WMS&version=1.1.0',{layers:'metrocali:sitm_estaciones'}).addTo(map);
