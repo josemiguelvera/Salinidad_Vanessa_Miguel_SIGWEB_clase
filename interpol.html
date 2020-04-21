@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+    <head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+			
+        <style type="text/css">
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+			font-family: Times, Arial, sans-serif;
+			background-image: url('images/bajo_el_agua.jpg');
+			}
+		h1 {
+			margin: 1px;
+			text-align: left;
+			padding: 10px;
+			color: #000;
+			font-size:35px;
+			}
+
+		}
+		#header {
+			margin: left;
+			width:370px;
+			font-family: Times;
+			font-size:20px;
+			padding: 10px;
+			float:right;
+		}
+		ul, ol {
+			list-style:none;
+
+		}		
+		.nav li a{
+			background-color:#439292;
+			color:#000;
+			text-decoration:none;
+			padding:5px 15px;
+			display: block;
+		}
+		}
+		.nav > li{
+			float:left;
+		}
+		.nav li a:hover{
+			background-color:#BFBFBF;
+		}
+		.nav li ul{
+			display:none;
+			position:absolute;
+			min-width:140px;
+		}
+		.nav li:hover > ul{
+			display:block;
+		}
+		
+        </style>
+        <title>Mapas Interpolados</title>
+    </head>
+    <body>
+			<div class="container">
+			<h1>Visor de Salinidad - Mapas Interpolados</h1>
+			<hr>
+
+			<div class="class="row">
+				<div class="col-md-6">
+				<h3>Interpolación por IDW</h3>
+				<hr>
+				<iframe frameborder = "3" width = "100%" height = "460" 
+				src = "IDW/index_IDW.html" name = "elframe" id="elframe">
+				</iframe>
+				</div>
+				<div class="col-md-6">
+				<h3>Interpolación por TIN</h3>
+				<hr>
+				<iframe frameborder = "3" width = "100%" height = "460" 
+				src = "TIN/index_TIN.html" name = "elframe" id="elframe">
+				</iframe>
+				</div>				
+			</div>
+		</div>	
+		<h2><a href="index.html">Volver al inicio</a></h2>
+	<script>
+
+		</script>
+	</body>
+</html>	
