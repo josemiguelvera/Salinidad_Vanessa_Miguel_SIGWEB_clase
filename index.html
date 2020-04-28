@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css"><link rel="stylesheet" href="css/L.Control.Locate.min.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
+        <link rel="stylesheet" href="css/leaflet-measure.css">
+		
+  		  <!--Bostrap CSS-->
+  		  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!-- FONT AWESOME -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+        <!--Custom CSS-->
+		    <link rel="stylesheet" href="css/main.css">
+		
+		<style>
+		
+        html, body, #map {
+            width: 100%;
+            height: 95%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title>Visor de Salinidad</title>
+    </head>
+    <body>
+		
+		<!--Navegacion-->
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<div class="container">
+			  <a class="navbar-brand" href="#"><h1>Visor de Salinidad</h1></a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			  </button>
+			  <div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav ml-auto">
+				  <li class="nav-item">
+					<a class="nav-link" href="equipos.html">Equipos</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="procesos.html">Procesos</a>
+				  </li>
+				  <li class="nav-item">
+					<a class="nav-link" href="#team">Contáctanos</a>
+				  </li>
+				</ul>
+			  </div>
+			</div>  
+		</nav>
+		
+		<!--Header-->
+		<header class="main-header">
+            <div class="background-overlay text-white py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 text-center justify-content-center align-self-center">
+                            <h2>Visor de la salinidad superficial del mar hecho por estudiantes de Ingeniería Topografica de la Universidad del Valle, sede Meléndez</h2>
+                            <p>Este visor web contiene la elaboración del instrumento de monitoreo de salinidad por medio de sensores de bajo costo, donde se tiene que el instrumento puede sensar variables ambientales y georreferenciar el lugar de la toma del dato, por lo que esto facilita la descripción de características del lugar donde se esté adquiriendo los datos permitiendo contemplar un panorama amplio de la realidad mediante un visor web.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="images/sensores.jpg" alt="Imagen de los productores" class="img-fluid d-none d-sm-block">                       
+                        </div>
+                    </div>
+                </div>                
+            </div>
+			
+		</header>
+		<!-------------MAPA---------------->
+        <div id="map">
+        </div>
+
+        <!--Caracterizticas-->
+        <section class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="card text-center border-primary">
+                            <div class="card-body">
+                                <h3>WMS</h3>
+                                <p>
+                                    Se utilizan sericios Web Maps Service para mejorar la navegación del usuario
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center border-primary">
+                            <div class="card-body">
+                                <h3>Responsive</h3>
+                                <p>
+                                    Está diseñado para que se adapte en cualquier dispositivo
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center border-primary">
+                            <div class="card-body">
+                                <h3>Wireless</h3>
+                                <p>
+                                    La relación instrumento-visor se hace mediante heramientas inalámbricas
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card text-center border-primary">
+                            <div class="card-body">
+                                <h3>Gratuito</h3>
+                                <p>
+                                    El acceso a la información presentanda en este viso es totalmente gratis
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </section>
+
+ <!--Acerca de este producto-->   
+        <section class="bg-light text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="m-5">
+                        <h3>¿Porqué este producto?</h3>
+                        <p>Este producto es necesario para visualizar los datos adquiridos por los sensores de conductividad y temperatura ubicados en la bahía de Buenaventura, Colombia. Además, se evidencian los productos finales realizados con los datos adquiridos y su postprocesaiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+ <!--Acordion Preguntas--> 
+    <section class="container text-center p-5">
+        <div class="row">
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  ¿Cómo se construyó el instrumento?
+                </button>
+              </h2>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body">
+                El instrumento fue creado en el laboratorio de geoposicionamiento de la Univeridad del Valle, especialmente en el curso de Tecnologías Geomáticas dictada por el profesor M.I. Carlos Quiroga, que a su vez hace parte del grupo de expertos que dirigen este proyecto.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  ¿Cómo se contruyo el visor web y movil? 
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                El visor web y movil se produjo en el transcurso del curso SIG-WEB y moviles del programa académico de Ingeniería Topográfica de la Univeridad del Valle, dirigido por el profesor M.I. Robin Olaya, el cual hace parte del grupo de expertos de este proyecto.
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  ¿Quién dirige este proyecto?
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Este proyecto hace parte de los insumos neesarios para optar por el titulo de Ingeniero Topografico por los estudiantes Jose Miguel Vera Saavedra y Vanessa Hernandez Bedoya, donde el proyecto de grado está dirigido por el profesor PhD. Jhon Jairo Barona, profesor de planta de la escuela de Ingeniería Civil y Geomática de la Universidad del Valle.
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+    </section>  
+
+ <!--Equipo--> 
+    <section class="team text-center" id="team">
+         <div class="container p-5">
+             <h1 class="text-white">Equipo de Trabajo</h1>
+             <p class="text-white">A continuación podras encontrar el contacto de los estudiantes a cargo del proyecto titulado "MONITOREO DE SALINIDAD EN LA BAHÍA DE BUENAVENTURA MEDIANTE EQUIPOS DE BAJO COSTO Y FÁCIL ACCESO"</p>
+             <div class="row">
+                 <div class="col-lg-6">
+                     <div class="card">
+                         <div class="card-body">
+                             <img src="images/miguel.jpeg" class="img-fluid rounded-circle w-50" alt="Jose Miguel Vera">
+                             <h3>Jose Miguel Vera Saavedra</h3>
+                             <p>Estudiante de décimo semestre de Ingeniería Topográfica de la Universidad del Valle sede Meléndez, que opta por el titulo profesional de Ingeniero Topográfico.</p>
+                             <div class="d-flex flex-row justify-content-center">
+                                 <div class="p-4">
+                                     Telefono: (+57) 315 2424002<br>
+                                     jose.vera@correounivalle.edu.co
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <div class="col-lg-6">
+                     <div class="card">
+                         <div class="card-body">
+                             <img src="images/vane.jpg" class="img-fluid rounded-circle w-50" alt="Vanessa Hernandez Bedoya">
+                             <h3>Vanessa Hernandez Bedoya</h3>
+                             <p>Estudiante de décimo semestre de Ingeniería Topográfica de la Universidad del Valle sede Meléndez, que opta por el titulo profesional de Ingeniera Topográfico.</p>
+                             <div class="d-flex flex-row justify-content-center">
+                                 <div class="p-4">
+                                     Telefono: (+57) 313 6044705<br>
+                                     hernandez.bedoya@correounivalle.edu.co
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+             </div>
+         </div>
+    </section>
+    
+    <footer>
+        <div class="continer p-3 text-center text-white">
+            <p>Copyright &copy; 2020</p>
+        </div>
+    </footer>
+
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="js/leaflet.wms.js"></script>
+        <script src="js/leaflet-control-geocoder.Geocoder.js"></script>
+        <script src="js/leaflet-measure.js"></script>
+        <script src="data/localizacin_Salineitors_4.js"></script>
+		
+		<!--Bostrap CSS-->
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        })
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        L.control.locate({locateOptions: {maxZoom: 19}}).addTo(map);
+        var measureControl = new L.Control.Measure({
+            position: 'topleft',
+            primaryLengthUnit: 'meters',
+            secondaryLengthUnit: 'kilometers',
+            primaryAreaUnit: 'sqmeters',
+            secondaryAreaUnit: 'hectares'
+        });
+        measureControl.addTo(map);
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .innerHTML = '';
+        document.getElementsByClassName('leaflet-control-measure-toggle')[0]
+        .className += ' fas fa-ruler';
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+            if (bounds_group.getLayers().length) {
+                map.fitBounds(bounds_group.getBounds());
+            }
+        }
+        var layer_GoogleSatelital_0 = L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=cn&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 18
+        });
+        layer_GoogleSatelital_0;
+        var layer_ESRIsatelite_1 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 30
+        });
+        layer_ESRIsatelite_1;
+        var layer_ESRITopo_2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 30
+        });
+        layer_ESRITopo_2;
+        map.addLayer(layer_ESRITopo_2);
+        var layer_Rios_3 = L.WMS.layer("https://geo.cvc.gov.co/arcgis/services/AGUA/Red_Hidrica/MapServer/WMSServer", "3", {
+            format: 'image/png',
+            uppercase: true,
+            transparent: true,
+            continuousWorld : true,
+            tiled: true,
+            info_format: 'text/html',
+            opacity: 1,
+            identify: false,
+            attribution: '',
+        });
+        map.addLayer(layer_Rios_3);
+        function pop_localizacin_Salineitors_4(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(feature.properties['id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">dispositiv</th>\
+                        <td>' + (feature.properties['dispositiv'] !== null ? Autolinker.link(feature.properties['dispositiv'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">Salini_gL</th>\
+                        <td>' + (feature.properties['Salini_gL'] !== null ? Autolinker.link(feature.properties['Salini_gL'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">temp_°C</th>\
+                        <td>' + (feature.properties['temp_°C'] !== null ? Autolinker.link(feature.properties['temp_°C'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_localizacin_Salineitors_4_0() {
+            return {
+                pane: 'pane_localizacin_Salineitors_4',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(50,87,128,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(72,123,182,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_localizacin_Salineitors_4');
+        map.getPane('pane_localizacin_Salineitors_4').style.zIndex = 404;
+        map.getPane('pane_localizacin_Salineitors_4').style['mix-blend-mode'] = 'normal';
+        var layer_localizacin_Salineitors_4 = new L.geoJson(json_localizacin_Salineitors_4, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_localizacin_Salineitors_4',
+            layerName: 'layer_localizacin_Salineitors_4',
+            pane: 'pane_localizacin_Salineitors_4',
+            onEachFeature: pop_localizacin_Salineitors_4,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_localizacin_Salineitors_4_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_localizacin_Salineitors_4);
+        map.addLayer(layer_localizacin_Salineitors_4);
+        var osmGeocoder = new L.Control.Geocoder({
+            collapsed: true,
+            position: 'topleft',
+            text: 'Search',
+            title: 'Testing'
+        }).addTo(map);
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .className += ' fa fa-search';
+        document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
+        .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/localizacin_Salineitors_4.png" /> localización_Salineitors': layer_localizacin_Salineitors_4,"Rios": layer_Rios_3,"ESRI Topo": layer_ESRITopo_2,"ESRI satelite": layer_ESRIsatelite_1,"Google Satelital": layer_GoogleSatelital_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
