@@ -178,8 +178,8 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
-        var baseMaps = {};
-        L.control.layers(baseMaps,{'<img src="legend/localizacin_Salineitors_6.png" /> localización_Salineitors': layer_localizacin_Salineitors_6,"TIN_sali": layer_TIN_sali_5,"TIN_temp": layer_TIN_temp_4,"Rios": layer_Rios_3,"ESRI Topo": layer_ESRITopo_2,"ESRI satelite": layer_ESRIsatelite_1,"Google Satelital": layer_GoogleSatelital_0,}).addTo(map);
+        var baseMaps = {"Google Satelital": layer_GoogleSatelital_0,"ESRI Satelital": layer_ESRIsatelite_1,"ESRI Topográfico": layer_ESRITopo_2,};
+        L.control.layers(baseMaps,{'<img src="legend/localizacin_Salineitors_6.png" /> Localización Salineitors': layer_localizacin_Salineitors_6,"Rios": layer_Rios_3,"Salinidad TIN": layer_TIN_sali_5,"Temperatura TIN": layer_TIN_temp_4,}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
