@@ -260,9 +260,20 @@
             zoomControl:true, maxZoom:28, minZoom:1
         })
         var hash = new L.Hash(map);
+        
         //plugin imprimir
         L.control.browserPrint().addTo(map);
-        
+
+        var datos= L.tileLayer.wms('http://localhost:8080/geoserver/salinidad/wms?service=WMS',
+        {
+          layers: 'salinidad:datos',
+          attribution: 'Datos',
+          crs:L.CRS.EPSG4326,
+          format: 'image/png',
+          transparent: true
+        }); 
+        datos.addTo(map);
+
 
 
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
@@ -331,15 +342,15 @@
                         <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(feature.properties['id'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">dispositiv</th>\
+                        <th scope="row">Dispositivo:</th>\
                         <td>' + (feature.properties['dispositiv'] !== null ? Autolinker.link(feature.properties['dispositiv'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">Salini_gL</th>\
+                        <th scope="row">Salinidad (g/L):</th>\
                         <td>' + (feature.properties['Salini_gL'] !== null ? Autolinker.link(feature.properties['Salini_gL'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <th scope="row">temp_°C</th>\
+                        <th scope="row">Temperatura (°C):</th>\
                         <td>' + (feature.properties['temp_°C'] !== null ? Autolinker.link(feature.properties['temp_°C'].toLocaleString(), {truncate: {length: 30, location: 'smart'}}) : '') + '</td>\
                     </tr>\
                 </table>';
@@ -393,7 +404,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {"Google Satelital": layer_GoogleSatelital_0,"ESRI Satelital": layer_ESRIsatelite_1,"ESRI Topográfico": layer_ESRITopo_2,};
-        L.control.layers(baseMaps,{'<img src="legend/localizacin_Salineitors_4.png" /> Localización Salineitors': layer_localizacin_Salineitors_4,"Rios": layer_Rios_3,}).addTo(map);
+        L.control.layers(baseMaps,{"Datos":datos,'<img src="legend/localizacin_Salineitors_4.png" /> Localización Salineitors': layer_localizacin_Salineitors_4,"Rios": layer_Rios_3,}).addTo(map);
         setBounds();
         </script>
     </body>
