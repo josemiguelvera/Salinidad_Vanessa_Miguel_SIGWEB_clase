@@ -236,7 +236,8 @@
     </footer>
 
         <script src="js/qgis2web_expressions.js"></script>
-        <script src="js/leaflet.js"></script><script src="js/L.Control.Locate.min.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/L.Control.Locate.min.js"></script>
         <script src="js/leaflet.rotatedMarker.js"></script>
         <script src="js/leaflet.pattern.js"></script>
         <script src="js/leaflet-hash.js"></script>
@@ -249,6 +250,8 @@
         <script src="js/leaflet-measure.js"></script>
         <script src="data/localizacin_Salineitors_4.js"></script>
         <script src="dist/leaflet.browser.print.min.js"></script>
+
+
 		
 		<!--Bostrap CSS-->
 		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
@@ -267,13 +270,18 @@
 
         var datos= L.tileLayer.wms('http://localhost:8080/geoserver/salinidad/wms?service=WMS',
         {
-          layers: 'salinidad:datos_act',
+          layers: 'salinidad:datos',
           attribution: 'Datos',
           crs:L.CRS.EPSG4326,
           format: 'image/png',
           transparent: true
         }); 
         datos.addTo(map);
+
+        var source = L.WMS.source('http://localhost:8080/geoserver/salinidad/wms?service=WMS', {
+         opacity: 0.1,
+        });
+        source.getLayer('salinidad:datos').addTo(map);
 
 
 
