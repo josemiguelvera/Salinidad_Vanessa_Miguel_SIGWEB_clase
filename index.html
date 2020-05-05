@@ -105,7 +105,7 @@
                             <div class="card-body">
                                 <h3>Wireless</h3>
                                 <p>
-                                    La relación instrumento-visor se hace mediante heramientas inalámbricas
+                                    La relación instrumento-visor se hace mediante herramientas inalámbricas
                                 </p>
                             </div>
                         </div>
@@ -131,8 +131,8 @@
             <div class="container">
                 <div class="row">
                     <div class="m-5">
-                        <h3>¿Porqué este producto?</h3>
-                        <p>Este producto es necesario para visualizar los datos adquiridos por los sensores de conductividad y temperatura ubicados en la bahía de Buenaventura, Colombia. Además, se evidencian los productos finales realizados con los datos adquiridos y su postprocesaiento.</p>
+                        <h3>¿Por qué este producto?</h3>
+                        <p>Este producto es necesario para visualizar los datos adquiridos por los sensores de conductividad y temperatura ubicados en la bahía de Buenaventura, Colombia. Además, se evidencian los productos finales realizados con los datos adquiridos y su postprocesamiento.</p>
                     </div>
                 </div>
             </div>
@@ -230,6 +230,7 @@
     
     <footer>
         <div class="continer p-3 text-center text-white">
+            <hr>
             <p>Copyright &copy; 2020</p>
         </div>
     </footer>
@@ -266,7 +267,7 @@
 
         var datos= L.tileLayer.wms('http://localhost:8080/geoserver/salinidad/wms?service=WMS',
         {
-          layers: 'salinidad:datos',
+          layers: 'salinidad:datos_act',
           attribution: 'Datos',
           crs:L.CRS.EPSG4326,
           format: 'image/png',
