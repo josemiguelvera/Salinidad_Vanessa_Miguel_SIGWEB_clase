@@ -152,14 +152,14 @@
                 pane: 'pane_localizacin_Salineitors_6',
                 radius: 4.0,
                 opacity: 1,
-                color: 'rgba(50,87,128,1.0)',
+                color: 'transparent',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
                 weight: 2.0,
                 fill: true,
                 fillOpacity: 1,
-                fillColor: 'rgba(72,123,182,1.0)',
+                fillColor: 'transparent',
                 interactive: true,
             }
         }
@@ -194,7 +194,7 @@
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
         var baseMaps = {"Google Satelital": layer_GoogleSatelital_0,"ESRI Satelital": layer_ESRIsatelite_1,"ESRI Topográfico": layer_ESRITopo_2,};
-        L.control.layers(baseMaps,{"Datos":datos,'<img src="legend/localizacin_Salineitors_6.png" /> Localización Salineitors': layer_localizacin_Salineitors_6,"Rios": layer_Rios_3,"Salinidad TIN": layer_TIN_sali_5,"Temperatura TIN": layer_TIN_temp_4,}).addTo(map);
+        L.control.layers(baseMaps,{'<img src="../legend/datos.png"/> Datos':datos,"Rios": layer_Rios_3,"Salinidad TIN": layer_TIN_sali_5,"Temperatura TIN": layer_TIN_temp_4,}).addTo(map);
         setBounds();
         L.ImageOverlay.include({
             getBounds: function () {
